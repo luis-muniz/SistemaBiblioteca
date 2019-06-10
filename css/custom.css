@@ -1,0 +1,21 @@
+
+body{
+    background: #e0e0e0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+.page-footer {
+    padding-top: 0; 
+}
+
+.linkDes{
+	color: currentColor;
+	cursor: not-allowed;
+	opacity: 0.5;
+	text-decoration: none;
+}
