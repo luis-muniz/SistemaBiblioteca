@@ -95,7 +95,7 @@ include('../php/select.php');
                     }else{
                        echo '<li class="collection-item">'              
                        .'<div class="card horizontal z-depth-3">'
-                       .'<div class="card-image">'
+                       .'<div cutf8_encode(lass="card-image">'
                        .'<img src="../img/'.$livros["livro_id"].'_img.jpg" class="">'
                        .'</div>'
                        .'<div class="card-stacked">'

@@ -1,5 +1,7 @@
 <?php
     session_start();
+    include_once("../php/verificar_se_ja_logou.php");
+    verificarUsuarioLogado();
 ?>
 
 <!DOCTYPE html>

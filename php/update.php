@@ -1,4 +1,5 @@
 <?php
+
     include_once('conexao.php');
 
     function indisExemplar($exemplar_id){

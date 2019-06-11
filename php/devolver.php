@@ -27,28 +27,30 @@ if ($emp == false) {
 	}
 
 	addDevolucao($emprestimoID,$cont*0.3);
-	disExemplar($emp["exemplar_id"]);
-
+	disExemplar($emp["exemplar_id"]);    
 
 	$user = consultarUsuariosID($emp["usuario_id"]);
-
-	diminuirEmprestimo($user); 
+    diminuirEmprestimo($user);
+    
+    $exem = consultarExemplarAux($emp["exemplar_id"]);
+    $livro = consultarLivro($exem["livro_id"]);
+	 
 
     $html = "
     <fieldset>
     <h1>Comprovante de Devolução</h1>
     <p class='center sub-titulo'>
     ID EMPRESTIMO <strong>".$emprestimoID."</strong> - 
-    MULTA <strong> R$".$cont*0.3."</strong>
+    MULTA <strong> R$ ".$cont*0.3."</strong>
     </p>
-    <p>Recebi de <strong>".$user["nome"]."</strong></p>
-    <p>o livro <strong>"."X"."</strong></p>
-    <p>Correspondente ao codigo <strong>"."X"."<strong></p>
-    <p>e para clareza firmo o presente.</p>
-    <p class='direita'>Itapeva, 11 de Julho de 2017</p>
-    <p>Assinatura Funcionario: .................................................................................................</p>
+    <p>A cliente <strong>".$user["nome"]." - ID ".$user["usuario_id"]."</strong></p>
+    <p>devolveu o exemplar <strong>".$livro["titulo"]."</strong></p>
+    <p>Correspondente ao codigo <strong>".$exem["exemplar_id"]."<strong></p>
+    <p>em perfeitas condições.</p>
+    <p class='direita'> DATA DE DEVOLUÇÃO: ".$data_devolucao."</p>
+    <p>Assinatura Funcionario: ..............................................................</p>
     <p></p>
-    <p>ID do usuario <strong>".$user["usuario_id"]."</strong></p>
+    <p></p>
     </fieldset>    
     ";
 
@@ -61,8 +63,9 @@ if ($emp == false) {
     $css = file_get_contents("../mpdf60/css/estilo.css");
     $mpdf->WriteHTML($css,1);
     $mpdf->WriteHTML($html);
-    ob_clean(); 
+    ob_clean();
     $mpdf->Output();
+
     ///*
     $_SESSION["noticia"] = "Devoulacao Realizada!";
 	$_SESSION["alerta"] = "sucess";

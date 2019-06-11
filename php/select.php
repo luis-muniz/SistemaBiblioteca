@@ -63,7 +63,7 @@
 
     function verificarReserva($usuario_id,$livro_id){
         $pdo = conectarBD();
-        $teste = $pdo->prepare("SELECT * FROM reserva WHERE usuario_id = :usuario_id and livro_id = :livro_id");
+        $teste = $pdo->prepare("SELECT * FROM reserva WHERE usuario_id = :usuario_id and livro_id = :livro_id and ativo = true");
         $teste->bindValue(':usuario_id',$usuario_id);
         $teste->bindValue(':livro_id',$livro_id);
         $teste->execute();
@@ -130,6 +130,15 @@
         $pdo = conectarBD();
         $teste = $pdo->prepare("SELECT * FROM usuario WHERE email= :email");
          $teste->bindValue(':email',$email);
+        $teste->execute();
+        //recebendo a consulta 
+        return $teste->fetch();
+    }
+
+    function consultarLivro($livro_id){
+        $pdo = conectarBD();
+        $teste = $pdo->prepare("SELECT * FROM livro WHERE livro_id = :livro_id");
+         $teste->bindValue(':livro_id',$livro_id);
         $teste->execute();
         //recebendo a consulta 
         return $teste->fetch();
