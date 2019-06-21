@@ -1,4 +1,5 @@
 <?php
+//fazendo a conexao
     include_once('conexao.php');
 
     function addReserva($livro_id){

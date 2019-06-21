@@ -1,5 +1,6 @@
-<?php
-    //iniciando a sessao
+﻿<?php
+    
+     //iniciando sessao
     session_start();
     //arquivo php para realizar conexao
     include('conexao.php');

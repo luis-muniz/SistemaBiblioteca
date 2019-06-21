@@ -1,4 +1,5 @@
 <?php
+	//fazendo a conexao
     include_once('conexao.php');
 
     function buscarNomeUsuario(){

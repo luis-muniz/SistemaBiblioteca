@@ -1,4 +1,5 @@
-<?php
+﻿<?php
+//iniciando sessao
 session_start();
 include_once('select.php');
 include_once('insert.php');
